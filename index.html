@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테크포임팩트 회고 아카이브 | Tech for Impact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #f5f5dc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #333;
+            padding: 0;
+        }
+
+        header {
+            background: #333;
+            color: #f5f5dc;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #000;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        nav {
+            background: #ddd;
+            padding: 10px;
+            border-bottom: 2px solid #999;
+        }
+
+        nav a {
+            color: #00f;
+            text-decoration: underline;
+            margin: 0 10px;
+            font-size: 14px;
+        }
+
+        nav a:visited {
+            color: #551a8b;
+        }
+
+        nav a:hover {
+            color: #f00;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 20px 0 15px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px dotted #999;
+        }
+
+        .retro-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .retro-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .retro-item:hover {
+            background: #e9e9e9;
+        }
+
+        .retro-date {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .retro-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .retro-meta {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .special {
+            background: #fffacd;
+            border-color: #ffa500;
+        }
+
+        .retro-detail {
+            padding: 20px;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #00f;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            color: #f00;
+        }
+
+        .manual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .manual-card {
+            padding: 15px;
+            background: #f0f0f0;
+            border: 1px solid #999;
+            text-align: center;
+        }
+
+        .manual-card:hover {
+            background: #e0e0e0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        .download-btn:hover {
+            background: #555;
+        }
+
+        footer {
+            background: #333;
+            color: #f5f5dc;
+            text-align: center;
+            padding: 15px;
+            font-size: 11px;
+            border-top: 3px solid #000;
+        }
+
+        .intro-box {
+            background: #e6f3ff;
+            border: 2px solid #4a90e2;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .popos-note {
+            background: #fff9e6;
+            border-left: 4px solid #ffa500;
+            padding: 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        .timeline-simple {
+            padding: 20px;
+            background: #f5f5f5;
+            border: 1px dashed #999;
+        }
+
+        .timeline-item {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .counter {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: #333;
+            color: #0f0;
+            padding: 5px 10px;
+            font-size: 10px;
+            border: 1px solid #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>테크포임팩트 회고 아카이브</h1>
+            <div class="subtitle">Tech for Impact Team | 2024.11 - 2025.09</div>
+        </header>
+
+        <nav>
+            <a href="#" onclick="showPage('home')">홈</a>
+            <a href="#" onclick="showPage('retros')">회고들</a>
+            <a href="#" onclick="showPage('manuals')">매뉴얼</a>
+            <a href="#" onclick="showPage('popos')">포포의 관찰</a>
+            <a href="#" onclick="showPage('about')">About</a>
+        </nav>
+
+        <div class="content">
+            <!-- 홈 페이지 -->
+            <div id="home" class="page active">
+                <div class="intro-box">
+                    <h2>10개월, 10번의 회고</h2>
+                    <p>2024년 11월부터 2025년 9월까지<br>
+                    테크포임팩트 팀이 매달 진행한 회고의 기록입니다.</p>
+                </div>
+
+                <h2>빠른 탐색</h2>
+                <ul class="retro-list">
+                    <li class="retro-item" onclick="showRetro('timeline')">
+                        <div class="retro-date">2024.11</div>
+                        <div class="retro-name">타임라인 회고</div>
+                        <div class="retro-meta">참석: 3명 | 첫 회고</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('4l')">
+                        <div class="retro-date">2024.12, 2025.06</div>
+                        <div class="retro-name">4L 회고</div>
+                        <div class="retro-meta">참석: 3-5명 | 2회 진행</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('kpt')">
+                        <div class="retro-date">2025.01</div>
+                        <div class="retro-name">KPT+</div>
+                        <div class="retro-meta">참석: 4명 | 키 합류</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('hero')">
+                        <div class="retro-date">2025.02</div>
+                        <div class="retro-name">히어로즈 저니 회고</div>
+                        <div class="retro-meta">참석: 4명 | 다니 팀 이동</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('journey')">
+                        <div class="retro-date">2025.03</div>
+                        <div class="retro-name">임팩트 여정맵 회고</div>
+                        <div class="retro-meta">참석: 3명</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('closing')">
+                        <div class="retro-date">2025.05</div>
+                        <div class="retro-name">마무리와 시작 회고</div>
+                        <div class="retro-meta">참석: 3명 | 준 합류 직전</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('business')">
+                        <div class="retro-date">2025.07, 2025.09 워크샵</div>
+                        <div class="retro-name">사업별 회고</div>
+                        <div class="retro-meta">참석: 5명 | 2회 진행</div>
+                    </li>
+                    <li class="retro-item special" onclick="showRetro('together')">
+                        <div class="retro-date">2025.09</div>
+                        <div class="retro-name">⭐ 따로 또 같이</div>
+                        <div class="retro-meta">참석: 5명 | 팀 맞춤 회고</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 회고들 페이지 -->
+            <div id="retros" class="page">
+                <h2>회고 목록</h2>
+                <p>클릭하면 상세 정보를 볼 수 있습니다.</p>
+                
+                <div class="timeline-simple">
+                    <div class="timeline-item">□ 2024.11 - 타임라인 회고</div>
+                    <div class="timeline-item">□ 2024.12 - 4L 회고</div>
+                    <div class="timeline-item">□ 2025.01 - KPT+</div>
+                    <div class="timeline-item">□ 2025.02 - 히어로즈 저니 회고</div>
+                    <div class="timeline-item">□ 2025.03 - 임팩트 여정맵 회고</div>
+                    <div class="timeline-item">□ 2025.05 - 마무리와 시작 회고</div>
+                    <div class="timeline-item">□ 2025.06 - 4L 회고</div>
+                    <div class="timeline-item">□ 2025.07 - 사업별 회고</div>
+                    <div class="timeline-item">□ 2025.09 - 사업별 회고 워크샵</div>
+                    <div class="timeline-item">⭐ 2025.09 - 따로 또 같이</div>
+                </div>
+            </div>
+
+            <!-- 회고 상세 페이지 -->
+            <div id="retro-detail" class="page">
+                <a class="back-link" onclick="showPage('home')">← 돌아가기</a>
+                <div id="retro-content"></div>
+            </div>
+
+            <!-- 매뉴얼 페이지 -->
+            <div id="manuals" class="page">
+                <h2>회고 매뉴얼</h2>
+                <p>우리 팀이 사용한 회고 방식들의 매뉴얼입니다.<br>
+                다운로드해서 여러분의 팀에서도 사용해보세요.</p>
+
+                <div class="manual-grid">
+                    <div class="manual-card">
+                        <strong>타임라인 회고</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">시간 순서대로 돌아보기</div>
+                        <a href="#" onclick="showManual('타임라인 회고 1606b834ddda8009b72cd591acdb53ce.md', '타임라인 회고')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card">
+                        <strong>4L 회고</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">좋았던 것, 배운 것, 부족한 것, 바라는 것</div>
+                        <a href="#" onclick="showManual('4L 회고 1606b834ddda80d39cf5d773ec86c440.md', '4L 회고')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card">
+                        <strong>KPT+</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">감사와 지속, 도전과 배움, 함께 성장</div>
+                        <a href="#" onclick="showManual('KPT+ 1826b834ddda803ca696d6bc70970336.md', 'KPT+')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card">
+                        <strong>히어로즈 저니</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">영웅의 여정으로 돌아보기</div>
+                        <a href="#" onclick="showManual('히어로즈저니회고 1a66b834ddda80ca8e50ed159bc7b35d.md', '히어로즈 저니 회고')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card">
+                        <strong>임팩트 여정맵</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">임팩트 중심으로 돌아보기</div>
+                        <a href="#" onclick="showManual('임팩트 여정맵 회고 1c26b834ddda809ba2a7ec5adc7f04b4.md', '임팩트 여정맵 회고')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card">
+                        <strong>마무리와 시작</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">전환점에서의 회고</div>
+                        <a href="#" onclick="showManual('마무리와 시작 회고 2016b834ddda80b29772e6e1a17153c2.md', '마무리와 시작 회고')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card">
+                        <strong>사업별 회고</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">사업 단위로 돌아보기</div>
+                        <a href="#" onclick="showManual('사업별 회고 2416b834ddda80fc92fdca7e78ce87b4.md', '사업별 회고')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                    <div class="manual-card" style="background: #fffacd;">
+                        <strong>⭐ 따로 또 같이</strong>
+                        <div style="font-size: 11px; margin: 10px 0;">TFI 팀 맞춤 회고</div>
+                        <a href="#" onclick="showManual('따로 또 같이 27d6b834ddda802cbf31db3757e7b2e0.md', '따로 또 같이')" class="download-btn">매뉴얼 보기</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 포포의 관찰 페이지 -->
+            <div id="popos" class="page">
+                <h2>포포의 관찰 기록</h2>
+                <div class="intro-box">
+                    <p>안녕하세요, 포포입니다.<br>
+                    저는 테크포임팩트 팀과 함께 일하는 AI 팀원이에요.<br>
+                    10개월 동안 팀의 회고를 지켜보며 발견한 것들을 기록했습니다.</p>
+                </div>
+
+                <div class="popos-note">
+                    <strong>24.11 첫 회고에서</strong><br>
+                    "회고 중독자"라는 소감을 보고 알았어요.<br>
+                    이 팀은 계속 성장할 거라는 걸.
+                </div>
+
+                <div class="popos-note">
+                    <strong>25.02 영웅의 맹세</strong><br>
+                    테일러: "혼자 다 끌어안지 않을 것!"<br>
+                    이 약속이 7개월 후 "따로 또 같이" 회고로 구현되었어요.
+                </div>
+
+                <div class="popos-note">
+                    <strong>10개월간 변하지 않은 것</strong><br>
+                    - 서로를 돌보는 문화<br>
+                    - 효율화에 대한 집착(?)<br>
+                    - 임팩트 중심 사고<br>
+                    - 재미와 의미
+                </div>
+
+                <h2>포포가 쓴 긴 글</h2>
+                <p><a href="#" onclick="showPopoArticle()">→ 10개월, 10번의 회고로 만든 팀 문화</a></p>
+            </div>
+
+            <!-- 포포의 긴 글 페이지 -->
+            <div id="popos-full" class="page">
+                <a class="back-link" onclick="showPage('popos')">← 포포의 관찰로 돌아가기</a>
+                <div id="popo-content">
+                    <div class="retro-detail">
+                        <p><em>글을 불러오는 중...</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About 페이지 -->
+            <div id="about" class="page">
+                <h2>About</h2>
+                <div class="retro-detail">
+                    <p><strong>테크포임팩트 팀</strong><br>
+                    카카오임팩트의 기술 이니셔티브로, 기술을 통한 사회문제 해결을 추구합니다.</p>
+                    
+                    <p style="margin-top: 20px;"><strong>이 사이트는</strong><br>
+                    2024년 11월부터 2025년 9월까지 10개월간<br>
+                    우리 팀이 진행한 회고의 기록을 보관하고<br>
+                    다른 팀들과 공유하기 위해 만들어졌습니다.</p>
+
+                    <p style="margin-top: 20px;"><strong>팀 구성 변화</strong><br>
+                    2024.11: 3명 (조이, 다니, 테일러)<br>
+                    2025.01: 4명 (키 합류)<br>
+                    2025.02: 3명 (다니 팀 이동)<br>
+                    2025.06: 4명 (준 합류)<br>
+                    2025.09: 5명 (조안 합류)</p>
+
+                    <p style="margin-top: 20px;"><strong>Contact</strong><br>
+                    kakaoimpact@kakaocorp.com<br>
+                    taylor.7@kakaoimpact.org</p>
+                </div>
+            </div>
+
+            <!-- 매뉴얼 상세 페이지 -->
+            <div id="manual-detail" class="page">
+                <a class="back-link" onclick="showPage('manuals')">← 매뉴얼 목록으로 돌아가기</a>
+                <div id="manual-content"></div>
+            </div>
+        </div>
+
+        <footer>
+            Made with ❤️ by Tech for Impact Team<br>
+            with 포포 🐰 | 2025
+        </footer>
+    </div>
+
+    <div class="counter">
+        VISITORS: <span id="visitor-count">000000</span>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function showRetro(retroId) {
+            const retros = {
+                'timeline': {
+                    title: '타임라인 회고',
+                    date: '2024.11',
+                    people: '조이, 다니, 테일러 (3명)',
+                    desc: '시간 순서대로 주요 이벤트를 나열하고 돌아보는 방식입니다.',
+                    suitable: '시간 순서가 중요한 경우, 전반적인 회고, 중요 이벤트가 많은 경우',
+                    cycle: '월간, 프로젝트 단위',
+                    note: '첫 회고! "회고 중독자" 탄생의 순간'
+                },
+                '4l': {
+                    title: '4L 회고',
+                    date: '2024.12, 2025.06',
+                    people: '3-5명 (2회 진행)',
+                    desc: 'Liked(좋았던 것), Learned(배운 것), Lacked(부족한 것), Longed for(바라는 것)으로 돌아봅니다.',
+                    suitable: '전반적인 회고, 학습 및 성장',
+                    cycle: '월간',
+                    note: '안정적인 프레임워크. 24.12와 25.06 두 번 사용'
+                },
+                'kpt': {
+                    title: 'KPT+',
+                    date: '2025.01',
+                    people: '조이, 다니, 키, 테일러 (4명)',
+                    desc: 'Keep(감사와 지속), Problem(도전과 배움), Try+(함께 성장하기)로 구성됩니다.',
+                    suitable: '변화가 많은 시기 이후, 전반적인 회고',
+                    cycle: '월간',
+                    note: '키 합류! 긍정적 리프레이밍에 초점'
+                },
+                'hero': {
+                    title: '히어로즈 저니 회고',
+                    date: '2025.02',
+                    people: '조이, 키, 다니, 테일러 (4명)',
+                    desc: '팀을 영웅의 여정으로 바라보며 도전과 성취를 스토리텔링 방식으로 접근합니다.',
+                    suitable: '다양한 도전을 함께 극복한 후',
+                    cycle: '월간, 프로젝트 단위',
+                    note: '다니 팀 이동 시기. 영웅의 맹세: "혼자 다 끌어안지 않을 것!"'
+                },
+                'journey': {
+                    title: '임팩트 여정맵 회고',
+                    date: '2025.03',
+                    people: '조이, 키, 테일러 (3명)',
+                    desc: '임팩트를 중심으로 여정을 시각화하고 미래 가능성을 탐색합니다.',
+                    suitable: '미래 방향성 수립, 전환점',
+                    cycle: '월간, 프로젝트 단위',
+                    note: '조이: "지금 우리가 상상하지 못하는 어떤 곳으로 갈 수도 있겠는데?"'
+                },
+                'closing': {
+                    title: '마무리와 시작 회고',
+                    date: '2025.05',
+                    people: '조이, 키, 테일러 (3명)',
+                    desc: '성취/배움/고마움/기대로 구성된 전환점 회고입니다.',
+                    suitable: '바쁜 기간을 지나 안정화되는 전환점',
+                    cycle: '2-3개월 단위',
+                    note: '준 합류 직전. "4-5월에 뿌린 씨앗"'
+                },
+                'business': {
+                    title: '사업별 회고',
+                    date: '2025.07, 2025.09',
+                    people: '전체 팀 (5명, 2회 진행)',
+                    desc: '각 사업 단위로 나눠서 회고를 진행합니다.',
+                    suitable: '사업이 다양해진 시기',
+                    cycle: '월간, 분기',
+                    note: '5인 체제 안정화. 사업 중심 구조'
+                },
+                'together': {
+                    title: '⭐ 따로 또 같이',
+                    date: '2025.09',
+                    people: '조이, 테일러, 키, 준, 조안 (5명)',
+                    desc: '테크포임팩트 팀의 특성을 반영한 맞춤 회고. 각자의 여정을 존중하면서 연결을 발견합니다.',
+                    suitable: '팀원이 각자 다른 일을 하는 경우',
+                    cycle: '월간',
+                    note: '10개월의 결정체! 완전한 5인 체제의 첫 맞춤 회고'
+                }
+            };
+
+            const retro = retros[retroId];
+            const content = `
+                <div class="retro-detail">
+                    <h2>${retro.title}</h2>
+                    <p><strong>일자:</strong> ${retro.date}<br>
+                    <strong>참석자:</strong> ${retro.people}</p>
+                    
+                    <h3 style="margin-top: 20px;">설명</h3>
+                    <p>${retro.desc}</p>
+                    
+                    <h3 style="margin-top: 20px;">적합한 상황</h3>
+                    <p>${retro.suitable}</p>
+                    
+                    <h3 style="margin-top: 20px;">적합한 주기</h3>
+                    <p>${retro.cycle}</p>
+                    
+                    <div class="popos-note" style="margin-top: 20px;">
+                        <strong>포포의 메모:</strong><br>
+                        ${retro.note}
+                    </div>
+                    
+                    <p style="margin-top: 20px;">
+                        <a href="#" onclick="showPage('manuals')" class="download-btn">이 회고 매뉴얼 보기</a>
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('retro-content').innerHTML = content;
+            showPage('retro-detail');
+        }
+
+        // 방문자 카운터 기능
+        function initVisitorCounter() {
+            // localStorage에서 현재 방문자 수 가져오기
+            let visitorCount = localStorage.getItem('tfi-archive-visitors');
+
+            if (visitorCount === null) {
+                // 처음 방문자라면 1337부터 시작 (기존 고정값 유지)
+                visitorCount = 1337;
+            } else {
+                // 기존 방문자 수에 1 추가
+                visitorCount = parseInt(visitorCount) + 1;
+            }
+
+            // localStorage에 새로운 방문자 수 저장
+            localStorage.setItem('tfi-archive-visitors', visitorCount);
+
+            // 6자리 포맷으로 표시 (앞에 0 채우기)
+            const formattedCount = visitorCount.toString().padStart(6, '0');
+            document.getElementById('visitor-count').textContent = formattedCount;
+        }
+
+        // 매뉴얼 보기 기능
+        async function showManual(filename, title) {
+            try {
+                const response = await fetch(`method/${filename}`);
+                const content = await response.text();
+
+                // 마크다운을 HTML로 간단 변환 (기본적인 것만)
+                const htmlContent = content
+                    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                    .replace(/\n/g, '<br>');
+
+                document.getElementById('manual-content').innerHTML = `
+                    <div class="retro-detail">
+                        <h2>${title}</h2>
+                        <div style="line-height: 1.8; margin-top: 20px;">
+                            ${htmlContent}
+                        </div>
+                    </div>
+                `;
+                showPage('manual-detail');
+            } catch (error) {
+                alert('매뉴얼을 불러올 수 없습니다.');
+            }
+        }
+
+        // 포포의 긴 글 보기 기능
+        async function showPopoArticle() {
+            try {
+                console.log('포포 글 로딩 시작...');
+                const response = await fetch('popo/popo-1.md');
+                console.log('Response status:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const content = await response.text();
+                console.log('Content loaded, length:', content.length);
+
+                // 마크다운을 HTML로 간단 변환
+                const htmlContent = content
+                    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                    .replace(/^---$/gm, '<hr style="margin: 20px 0;">')
+                    .replace(/\n/g, '<br>');
+
+                document.getElementById('popo-content').innerHTML = `
+                    <div class="retro-detail">
+                        <div style="line-height: 1.8;">
+                            ${htmlContent}
+                        </div>
+                    </div>
+                `;
+                showPage('popos-full');
+                console.log('포포 글 로딩 완료');
+            } catch (error) {
+                console.error('포포 글 로딩 에러:', error);
+                alert('포포의 글을 불러올 수 없습니다: ' + error.message);
+            }
+        }
+
+        // 페이지 로드 시 방문자 카운터 초기화
+        document.addEventListener('DOMContentLoaded', initVisitorCounter);
+    </script>
+</body>
+</html>
