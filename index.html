@@ -11,63 +11,87 @@
             box-sizing: border-box;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
         body {
-            font-family: 'Courier New', monospace;
-            background: #f5f5dc;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;
+            background: #fff;
+            color: #555;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        @media (min-width: 600px) {
+            body {
+                font-size: 16px;
+            }
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: white;
-            border: 3px solid #333;
-            padding: 0;
+            width: 80%;
+            background: #fff;
+            box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
         }
 
         header {
-            background: #333;
-            color: #f5f5dc;
-            padding: 20px;
+            background: #fff;
+            color: #555;
+            padding: 2rem 0;
             text-align: center;
-            border-bottom: 3px solid #000;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e5e5;
         }
 
         h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 2rem;
+            margin: 0 0 0.5rem 0;
+            color: #353535;
+            line-height: normal;
         }
 
         .subtitle {
-            font-size: 12px;
-            color: #ccc;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            color: #979797;
         }
 
         nav {
-            background: #ddd;
-            padding: 10px;
-            border-bottom: 2px solid #999;
+            background: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
         nav a {
-            color: #00f;
-            text-decoration: underline;
-            margin: 0 10px;
-            font-size: 14px;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #555;
+            text-decoration: none;
+            margin: 0 2rem 0 0;
+            opacity: 0.6;
+            transition: all 0.2s ease-out;
+            display: inline-block;
         }
 
-        nav a:visited {
-            color: #551a8b;
+        nav a:last-child {
+            margin-right: 0;
         }
 
-        nav a:hover {
-            color: #f00;
+        nav a:hover,
+        nav a:focus {
+            color: #4a9ae1;
+            opacity: 1;
         }
 
         .content {
-            padding: 30px;
+            max-width: 800px;
+            width: 80%;
+            margin: 0 auto;
+            padding: 0 0 2rem 0;
         }
 
         .page {
@@ -79,10 +103,11 @@
         }
 
         h2 {
-            font-size: 18px;
-            margin: 20px 0 15px 0;
-            padding-bottom: 5px;
-            border-bottom: 2px dotted #999;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: #353535;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            line-height: normal;
         }
 
         .retro-list {
@@ -91,37 +116,50 @@
         }
 
         .retro-item {
-            padding: 15px;
-            margin: 10px 0;
+            padding: 1.5rem;
+            margin: 1rem 0;
             background: #f9f9f9;
-            border: 1px solid #ccc;
+            border: 1px solid #e5e5e5;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s ease-out;
+            border-radius: 4px;
         }
 
         .retro-item:hover {
-            background: #e9e9e9;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+            transform: translateY(-2px);
         }
 
         .retro-date {
-            font-size: 11px;
-            color: #666;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 0.75rem;
+            color: #979797;
         }
 
         .retro-name {
-            font-size: 16px;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin: 5px 0;
+            margin: 0.5rem 0;
+            color: #353535;
         }
 
         .retro-meta {
-            font-size: 11px;
-            color: #999;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 0.8rem;
+            color: #979797;
         }
 
         .special {
-            background: #fffacd;
-            border-color: #ffa500;
+            background: #f0f8ff;
+            border: 2px solid #4a9ae1;
+            box-shadow: 0 0 0 1px rgba(74, 154, 225, 0.1);
+        }
+
+        .special:hover {
+            background: #e6f3ff;
+            border-color: #4a9ae1;
         }
 
         .retro-detail {
@@ -169,6 +207,7 @@
             color: white;
             text-decoration: none;
             font-size: 11px;
+            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
         }
 
         .download-btn:hover {
@@ -176,27 +215,37 @@
         }
 
         footer {
-            background: #333;
-            color: #f5f5dc;
+            background: #fff;
+            color: #555;
             text-align: center;
-            padding: 15px;
-            font-size: 11px;
-            border-top: 3px solid #000;
+            padding: 2rem 0;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+            font-family: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
         }
 
         .intro-box {
-            background: #e6f3ff;
-            border: 2px solid #4a90e2;
-            padding: 20px;
-            margin: 20px 0;
+            background: #f9f9f9;
+            border-left: 0.25rem solid #e5e5e5;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
         }
 
         .popos-note {
-            background: #fff9e6;
-            border-left: 4px solid #ffa500;
-            padding: 15px;
-            margin: 15px 0;
+            background: #f9f9f9;
+            border-left: 0.25rem solid #e5e5e5;
+            color: #979797;
+            margin: 0.8rem 0;
+            padding: 0.5rem 1rem;
             font-style: italic;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .popos-note strong {
+            color: #555;
+            font-weight: bold;
         }
 
         .timeline-simple {
