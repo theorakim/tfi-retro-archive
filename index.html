@@ -237,6 +237,19 @@
             background: #111111;
             border: 1px solid #333333;
             margin: 2rem 0;
+            color: #fffef7;
+        }
+
+        .retro-detail h1, .retro-detail h2, .retro-detail h3, .retro-detail h4, .retro-detail h5, .retro-detail h6 {
+            color: #fffef7;
+        }
+
+        .retro-detail p, .retro-detail div, .retro-detail span, .retro-detail li {
+            color: #fffef7;
+        }
+
+        .retro-detail strong {
+            color: #fede00;
         }
 
         .back-link {
@@ -770,7 +783,7 @@
 
                     <p style="margin-top: 20px;">
                         <a href="#" onclick="showPage('manuals')" class="download-btn">이 회고 매뉴얼 보기</a>
-                        ${retro.slide ? `<a href="/retros/${retro.slide}" target="_blank" class="download-btn" style="margin-left: 10px; background: #4a9ae1;">🎯 실제 슬라이드 보기</a>` : ''}
+                        ${retro.slide ? `<a href="/tfi-retro-archive/retros/${retro.slide}" target="_blank" class="download-btn" style="margin-left: 10px; background: #4a9ae1;">🎯 실제 슬라이드 보기</a>` : ''}
                     </p>
                 </div>
             `;
@@ -850,7 +863,7 @@
         async function showPopoArticle() {
             try {
                 console.log('포포 글 로딩 시작...');
-                const response = await fetch('popo/popo-1.md');
+                const response = await fetch('/tfi-retro-archive/popo/popo-1.md');
                 console.log('Response status:', response.status);
 
                 if (!response.ok) {
@@ -880,7 +893,7 @@
                 showPage('popos-full');
 
                 // 포포 글 URL 업데이트
-                history.pushState({page: 'popos-full'}, '', '/popo');
+                history.pushState({page: 'popos-full'}, '', '/tfi-retro-archive/popo');
                 console.log('포포 글 로딩 완료');
             } catch (error) {
                 console.error('포포 글 로딩 에러:', error);
@@ -921,10 +934,10 @@
                 if (manualMap[manualName]) {
                     showManual(manualMap[manualName][0], manualMap[manualName][1]);
                 } else {
-                    showPage('home', false);
+                    showPage('issues', false);
                 }
             } else {
-                showPage('home', false);
+                showPage('issues', false);
             }
         }
 
