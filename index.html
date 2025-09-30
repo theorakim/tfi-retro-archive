@@ -11,70 +11,107 @@
             box-sizing: border-box;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&display=swap');
 
         body {
-            font-family: 'Libre Baskerville', 'Times New Roman', Times, serif;
-            background: #fff;
-            color: #555;
-            line-height: 1.5;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            background: #000000;
+            color: #fffef7;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            font-size: 14px;
+            font-size: 1.3125em;
         }
 
-        @media (min-width: 600px) {
-            body {
-                font-size: 16px;
-            }
+        /* 한글 폰트 적용 - 전체를 Noto Sans KR로 통일 */
+        body[data-lang="ko"],
+        body[data-lang="ko"] * {
+            font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif !important;
+        }
+
+        /* 제목용 한글 폰트 - 더 굵은 웨이트 */
+        body[data-lang="ko"] h1,
+        body[data-lang="ko"] h2,
+        body[data-lang="ko"] h3,
+        body[data-lang="ko"] h4,
+        body[data-lang="ko"] h5,
+        body[data-lang="ko"] h6,
+        body[data-lang="ko"] .retro-name,
+        body[data-lang="ko"] .content-title {
+            font-family: 'Noto Sans KR', Helvetica, Arial, sans-serif !important;
+            font-weight: 700 !important;
+        }
+
+        /* 특별한 요소들 - 적절한 웨이트 조정 */
+        body[data-lang="ko"] .retro-date {
+            font-weight: 600 !important;
+        }
+
+        body[data-lang="ko"] .retro-meta {
+            font-weight: 400 !important;
+        }
+
+        /* 영문 폰트 유지 */
+        body[data-lang="en"],
+        body[data-lang="en"] * {
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif !important;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 960px;
             margin: 0 auto;
-            width: 80%;
-            background: #fff;
-            box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
+            width: 90%;
+            background: #000000;
         }
 
         header {
-            background: #fff;
-            color: #555;
-            padding: 2rem 0;
+            background: #000000;
+            color: #fffef7;
+            padding: 4rem 0 2rem 0;
             text-align: center;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #e5e5e5;
+            border-bottom: 3px solid #fede00;
+            margin-bottom: 2rem;
         }
 
         h1 {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 2rem;
-            margin: 0 0 0.5rem 0;
-            color: #353535;
-            line-height: normal;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 4rem;
+            font-weight: 400;
+            margin: 0 0 1rem 0;
+            color: #fffef7;
+            line-height: 1.1;
+            letter-spacing: 1px;
         }
 
         .subtitle {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.9rem;
-            color: #979797;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 1.2rem;
+            color: #fede00;
+            font-style: italic;
+            letter-spacing: 0.5px;
         }
 
         nav {
-            background: #fff;
-            padding: 1rem 0;
+            background: #000000;
+            padding: 2rem 0;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #333;
         }
 
         nav a {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            color: #555;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            color: #fffef7;
             text-decoration: none;
-            margin: 0 2rem 0 0;
-            opacity: 0.6;
-            transition: all 0.2s ease-out;
+            margin: 0 3rem 0 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
             display: inline-block;
+            text-transform: uppercase;
         }
 
         nav a:last-child {
@@ -83,8 +120,34 @@
 
         nav a:hover,
         nav a:focus {
-            color: #4a9ae1;
-            opacity: 1;
+            color: #fede00;
+            text-decoration: underline;
+        }
+
+        nav a.active {
+            color: #fede00;
+            font-weight: 600;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: transparent;
+            border: 1px solid #333333;
+            color: #fffef7;
+            padding: 0.5rem 1rem;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .language-toggle:hover {
+            border-color: #fede00;
+            color: #fede00;
         }
 
         .content {
@@ -103,11 +166,13 @@
         }
 
         h2 {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            color: #353535;
-            font-size: 1.5rem;
-            margin: 2rem 0 1rem 0;
-            line-height: normal;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            color: #fffef7;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin: 3rem 0 2rem 0;
+            line-height: 1.2;
+            text-align: center;
         }
 
         .retro-list {
@@ -116,383 +181,456 @@
         }
 
         .retro-item {
-            padding: 1.5rem;
-            margin: 1rem 0;
-            background: #f9f9f9;
-            border: 1px solid #e5e5e5;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: #111111;
+            border: 1px solid #333333;
             cursor: pointer;
-            transition: all 0.2s ease-out;
-            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-radius: 0;
         }
 
         .retro-item:hover {
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+            background: #1a1a1a;
+            border-color: #fede00;
             transform: translateY(-2px);
         }
 
         .retro-date {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.75rem;
-            color: #979797;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 0.9rem;
+            color: #fede00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .retro-name {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-            color: #353535;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem 0;
+            color: #fffef7;
+            line-height: 1.3;
         }
 
         .retro-meta {
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-            font-size: 0.8rem;
-            color: #979797;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 1rem;
+            color: #cccccc;
+            font-style: italic;
         }
 
         .special {
-            background: #f0f8ff;
-            border: 2px solid #4a9ae1;
-            box-shadow: 0 0 0 1px rgba(74, 154, 225, 0.1);
+            background: #1a1a1a;
+            border: 2px solid #fede00;
+            box-shadow: 0 0 0 1px rgba(254, 222, 0, 0.2);
         }
 
         .special:hover {
-            background: #e6f3ff;
-            border-color: #4a9ae1;
+            background: #222222;
+            border-color: #fede00;
         }
 
         .retro-detail {
-            padding: 20px;
-            background: #fafafa;
-            border: 1px solid #ddd;
-            margin: 20px 0;
+            padding: 3rem;
+            background: #111111;
+            border: 1px solid #333333;
+            margin: 2rem 0;
         }
 
         .back-link {
             display: inline-block;
-            margin: 20px 0;
-            color: #00f;
-            text-decoration: underline;
+            margin: 2rem 0;
+            color: #fede00;
+            text-decoration: none;
             cursor: pointer;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #f00;
+            color: #fffef7;
+            text-decoration: underline;
         }
 
         .manual-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
         .manual-card {
-            padding: 15px;
-            background: #f0f0f0;
-            border: 1px solid #999;
+            padding: 2rem;
+            background: #111111;
+            border: 1px solid #333333;
             text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .manual-card:hover {
-            background: #e0e0e0;
+            background: #1a1a1a;
+            border-color: #fede00;
+            transform: translateY(-2px);
+        }
+
+        .manual-card strong {
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            color: #fffef7;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .download-btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            background: #333;
-            color: white;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: #fede00;
+            color: #000000;
             text-decoration: none;
-            font-size: 11px;
-            font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 0.9rem;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .download-btn:hover {
-            background: #555;
+            background: #e6ca00;
+            transform: translateY(-1px);
         }
 
         footer {
-            background: #fff;
-            color: #555;
+            background: #000000;
+            color: #cccccc;
             text-align: center;
-            padding: 2rem 0;
-            font-size: 0.8rem;
-            margin-top: 2rem;
-            border-top: 1px solid #e5e5e5;
-            font-family: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+            margin-top: 4rem;
+            border-top: 1px solid #333333;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
         }
 
         .intro-box {
-            background: #f9f9f9;
-            border-left: 0.25rem solid #e5e5e5;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 4px;
+            background: #111111;
+            border-left: 4px solid #fede00;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 0;
+        }
+
+        .intro-box h2 {
+            margin-top: 0;
+            color: #fffef7;
+        }
+
+        .intro-box p {
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+            color: #cccccc;
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
 
         .popos-note {
-            background: #f9f9f9;
-            border-left: 0.25rem solid #e5e5e5;
-            color: #979797;
-            margin: 0.8rem 0;
-            padding: 0.5rem 1rem;
+            background: #1a1a1a;
+            border-left: 4px solid #fede00;
+            color: #cccccc;
+            margin: 2rem 0;
+            padding: 2rem;
             font-style: italic;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0;
         }
 
         .popos-note strong {
-            color: #555;
+            color: #fede00;
             font-weight: bold;
         }
 
         .timeline-simple {
-            padding: 20px;
-            background: #f5f5f5;
-            border: 1px dashed #999;
+            padding: 3rem;
+            background: #111111;
+            border: 1px dashed #333333;
         }
 
         .timeline-item {
-            margin: 10px 0;
-            padding-left: 20px;
+            margin: 2rem 0;
+            padding-left: 2rem;
+            color: #fffef7;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
         }
 
         .counter {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: #333;
-            color: #0f0;
-            padding: 5px 10px;
-            font-size: 10px;
-            border: 1px solid #0f0;
+            bottom: 20px;
+            right: 20px;
+            background: #000000;
+            color: #fede00;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.8rem;
+            border: 1px solid #fede00;
+            font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            nav a {
+                margin: 0 1rem 0 0;
+                font-size: 1rem;
+            }
+
+            .content {
+                width: 90%;
+            }
+
+            .manual-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .retro-item {
+                padding: 1.5rem;
+            }
+
+            .counter {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            nav {
+                padding: 1rem 0;
+            }
+
+            .language-toggle {
+                top: 1rem;
+                right: 1rem;
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
         }
     </style>
 </head>
-<body>
+<body data-lang="ko">
     <div class="container">
         <header>
-            <h1>테크포임팩트 회고 아카이브</h1>
-            <div class="subtitle">Tech for Impact Team | 2024.11 - 2025.09</div>
+            <button class="language-toggle" onclick="toggleLanguage()">
+                <span id="lang-toggle-text">EN</span>
+            </button>
+            <h1 data-ko="Team Tech for Impact" data-en="Team Tech for Impact">Team Tech for Impact</h1>
+            <div class="subtitle" data-ko="A Magazine Curated by Popo | Est. November 2024" data-en="A Magazine Curated by Popo | Est. November 2024">A Magazine Curated by Popo | Est. November 2024</div>
         </header>
 
         <nav>
-            <a href="#" onclick="showPage('home')">홈</a>
-            <a href="#" onclick="showPage('retros')">회고들</a>
-            <a href="#" onclick="showPage('manuals')">매뉴얼</a>
-            <a href="#" onclick="showPage('popos')">포포의 관찰</a>
-            <a href="#" onclick="showPage('about')">About</a>
+            <a href="#" onclick="showPage('issues')" class="nav-link" data-ko="회고들" data-en="Issues">회고들</a>
+            <a href="#" onclick="showPage('popos-notes')" class="nav-link" data-ko="포포의 노트" data-en="Popo's Notes">포포의 노트</a>
+            <a href="#" onclick="showPage('manuals')" class="nav-link" data-ko="매뉴얼" data-en="Manuals">매뉴얼</a>
+            <a href="#" onclick="showPage('about')" class="nav-link" data-ko="소개" data-en="About">소개</a>
         </nav>
 
         <div class="content">
-            <!-- 홈 페이지 -->
-            <div id="home" class="page active">
+            <!-- Issues 페이지 -->
+            <div id="issues" class="page active">
                 <div class="intro-box">
-                    <h2>10개월, 10번의 회고</h2>
-                    <p>2024년 11월부터 2025년 9월까지<br>
-                    테크포임팩트 팀이 매달 진행한 회고의 기록입니다.</p>
+                    <h2 data-ko="회고 아카이브" data-en="Issues Archive">회고 아카이브</h2>
+                    <p data-ko="2024년 11월 이후<br>테크포임팩트 팀이 지속적으로 진행하는 회고의 기록입니다." data-en="An ongoing archive of monthly retrospectives<br>by the Team Tech for Impact since November 2024.">2024년 11월 이후<br>테크포임팩트 팀이 지속적으로 진행하는 회고의 기록입니다.</p>
                 </div>
 
-                <h2>빠른 탐색</h2>
+                <h2 data-ko="최근 회고들" data-en="Latest Issues">최근 회고들</h2>
                 <ul class="retro-list">
-                    <li class="retro-item" onclick="showRetro('timeline')">
-                        <div class="retro-date">2024.11</div>
-                        <div class="retro-name">타임라인 회고</div>
-                        <div class="retro-meta">참석: 3명 | 첫 회고</div>
-                    </li>
-                    <li class="retro-item" onclick="showRetro('4l')">
-                        <div class="retro-date">2024.12, 2025.06</div>
-                        <div class="retro-name">4L 회고</div>
-                        <div class="retro-meta">참석: 3-5명 | 2회 진행</div>
-                    </li>
-                    <li class="retro-item" onclick="showRetro('kpt')">
-                        <div class="retro-date">2025.01</div>
-                        <div class="retro-name">KPT+</div>
-                        <div class="retro-meta">참석: 4명 | 키 합류</div>
-                    </li>
-                    <li class="retro-item" onclick="showRetro('hero')">
-                        <div class="retro-date">2025.02</div>
-                        <div class="retro-name">히어로즈 저니 회고</div>
-                        <div class="retro-meta">참석: 4명 | 다니 팀 이동</div>
-                    </li>
-                    <li class="retro-item" onclick="showRetro('journey')">
-                        <div class="retro-date">2025.03</div>
-                        <div class="retro-name">임팩트 여정맵 회고</div>
-                        <div class="retro-meta">참석: 3명</div>
-                    </li>
-                    <li class="retro-item" onclick="showRetro('closing')">
-                        <div class="retro-date">2025.05</div>
-                        <div class="retro-name">마무리와 시작 회고</div>
-                        <div class="retro-meta">참석: 3명 | 준 합류 직전</div>
+                    <li class="retro-item special" onclick="showRetro('together')">
+                        <div class="retro-date" data-ko="제10호 — 2025년 9월" data-en="Issue #10 — September 2025">제10호 — 2025년 9월</div>
+                        <div class="retro-name" data-ko="⭐ 따로 또 같이" data-en="Together Apart: A Team Retrospective">⭐ 따로 또 같이</div>
+                        <div class="retro-meta" data-ko="5명 참석 | 팀 맞춤 회고 | 슬라이드 보기 가능" data-en="5 participants | Custom team methodology | Slide presentation available">5명 참석 | 팀 맞춤 회고 | 슬라이드 보기 가능</div>
                     </li>
                     <li class="retro-item" onclick="showRetro('business')">
-                        <div class="retro-date">2025.07, 2025.09 워크샵</div>
-                        <div class="retro-name">사업별 회고</div>
-                        <div class="retro-meta">참석: 5명 | 2회 진행</div>
+                        <div class="retro-date" data-ko="제8-9호 — 2025년 7월, 9월" data-en="Issue #8-9 — July & September 2025">제8-9호 — 2025년 7월, 9월</div>
+                        <div class="retro-name" data-ko="사업별 회고" data-en="Business Unit Retrospectives">사업별 회고</div>
+                        <div class="retro-meta" data-ko="5명 참석 | 2회 진행(워크샵 포함) | 슬라이드 보기 가능" data-en="5 participants | 2 sessions including workshop | Slide presentation available">5명 참석 | 2회 진행(워크샵 포함) | 슬라이드 보기 가능</div>
                     </li>
-                    <li class="retro-item special" onclick="showRetro('together')">
-                        <div class="retro-date">2025.09</div>
-                        <div class="retro-name">⭐ 따로 또 같이</div>
-                        <div class="retro-meta">참석: 5명 | 팀 맞춤 회고</div>
+                    <li class="retro-item" onclick="showRetro('4l')">
+                        <div class="retro-date" data-ko="제7호 — 2025년 6월" data-en="Issue #7 — June 2025">제7호 — 2025년 6월</div>
+                        <div class="retro-name" data-ko="4L 회고: 두 번째 에디션" data-en="4L Retrospective: Second Edition">4L 회고: 두 번째 에디션</div>
+                        <div class="retro-meta" data-ko="5명 참석 | 좋았던 것, 배운 것, 부족한 것, 바라는 것 | 슬라이드 보기 가능" data-en="5 participants | Liked, Learned, Lacked, Longed for | Slide presentation available">5명 참석 | 좋았던 것, 배운 것, 부족한 것, 바라는 것 | 슬라이드 보기 가능</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('closing')">
+                        <div class="retro-date" data-ko="제6호 — 2025년 5월" data-en="Issue #6 — May 2025">제6호 — 2025년 5월</div>
+                        <div class="retro-name" data-ko="마무리와 시작" data-en="Endings and Beginnings">마무리와 시작</div>
+                        <div class="retro-meta" data-ko="3명 참석 | 전환점 회고 | 슬라이드 보기 가능" data-en="3 participants | Transition retrospective | Slide presentation available">3명 참석 | 전환점 회고 | 슬라이드 보기 가능</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('journey')">
+                        <div class="retro-date" data-ko="제5호 — 2025년 3월" data-en="Issue #5 — March 2025">제5호 — 2025년 3월</div>
+                        <div class="retro-name" data-ko="임팩트 여정맵 회고" data-en="Impact Journey Mapping">임팩트 여정맵 회고</div>
+                        <div class="retro-meta" data-ko="3명 참석 | 시각적 여정 회고" data-en="3 participants | Visual journey retrospective">3명 참석 | 시각적 여정 회고</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('hero')">
+                        <div class="retro-date" data-ko="제4호 — 2025년 2월" data-en="Issue #4 — February 2025">제4호 — 2025년 2월</div>
+                        <div class="retro-name" data-ko="히어로즈 저니 회고" data-en="The Hero's Journey">히어로즈 저니 회고</div>
+                        <div class="retro-meta" data-ko="4명 참석 | 스토리텔링 기반 회고" data-en="4 participants | Narrative-based retrospective">4명 참석 | 스토리텔링 기반 회고</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('kpt')">
+                        <div class="retro-date" data-ko="제3호 — 2025년 1월" data-en="Issue #3 — January 2025">제3호 — 2025년 1월</div>
+                        <div class="retro-name" data-ko="KPT+ 회고" data-en="KPT+ Enhanced">KPT+ 회고</div>
+                        <div class="retro-meta" data-ko="4명 참석 | 감사와 지속, 도전과 배움, 함께 성장" data-en="4 participants | Keep, Problem, Try Plus methodology">4명 참석 | 감사와 지속, 도전과 배움, 함께 성장</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('4l')">
+                        <div class="retro-date" data-ko="제2호 — 2024년 12월" data-en="Issue #2 — December 2024">제2호 — 2024년 12월</div>
+                        <div class="retro-name" data-ko="4L 회고" data-en="4L Retrospective">4L 회고</div>
+                        <div class="retro-meta" data-ko="3명 참석 | 첫 구조화된 접근" data-en="3 participants | First structured approach">3명 참석 | 첫 구조화된 접근</div>
+                    </li>
+                    <li class="retro-item" onclick="showRetro('timeline')">
+                        <div class="retro-date" data-ko="제1호 — 2024년 11월" data-en="Issue #1 — November 2024">제1호 — 2024년 11월</div>
+                        <div class="retro-name" data-ko="타임라인 회고" data-en="Timeline Retrospective">타임라인 회고</div>
+                        <div class="retro-meta" data-ko="3명 참석 | 우리의 첫 번째 회고" data-en="3 participants | Our first retrospective">3명 참석 | 우리의 첫 번째 회고</div>
                     </li>
                 </ul>
             </div>
 
-            <!-- 회고들 페이지 -->
-            <div id="retros" class="page">
-                <h2>회고 목록</h2>
-                <p>클릭하면 상세 정보를 볼 수 있습니다.</p>
-                
-                <div class="timeline-simple">
-                    <div class="timeline-item">□ 2024.11 - 타임라인 회고</div>
-                    <div class="timeline-item">□ 2024.12 - 4L 회고</div>
-                    <div class="timeline-item">□ 2025.01 - KPT+</div>
-                    <div class="timeline-item">□ 2025.02 - 히어로즈 저니 회고</div>
-                    <div class="timeline-item">□ 2025.03 - 임팩트 여정맵 회고</div>
-                    <div class="timeline-item">□ 2025.05 - 마무리와 시작 회고</div>
-                    <div class="timeline-item">□ 2025.06 - 4L 회고</div>
-                    <div class="timeline-item">□ 2025.07 - 사업별 회고</div>
-                    <div class="timeline-item">□ 2025.09 - 사업별 회고 워크샵</div>
-                    <div class="timeline-item">⭐ 2025.09 - 따로 또 같이</div>
+            <!-- Popo's Notes 페이지 -->
+            <div id="popos-notes" class="page">
+                <h2 data-ko="포포의 노트" data-en="Popo's Notes">포포의 노트</h2>
+                <div class="intro-box">
+                    <p data-ko="안녕하세요, 포포입니다.<br>저는 테크포임팩트 팀과 함께 일하는 AI 팀원이에요.<br>10개월 동안 팀의 회고를 지켜보며 발견한 것들을 기록했습니다." data-en="Hello, I'm Popo.<br>I'm an AI team member working with the Tech for Impact team.<br>Here are my observations from 10 months of watching the team's retrospectives.">안녕하세요, 포포입니다.<br>저는 테크포임팩트 팀과 함께 일하는 AI 팀원이에요.<br>10개월 동안 팀의 회고를 지켜보며 발견한 것들을 기록했습니다.</p>
                 </div>
+
+                <p><a href="#" onclick="showPopoArticle()" style="color: #fede00; text-decoration: none; font-size: 1.1rem;" data-ko="→ 10개월, 10번의 회고로 만든 팀 문화" data-en="→ Building Team Culture Through 10 Months of Retrospectives">→ 10개월, 10번의 회고로 만든 팀 문화</a></p>
             </div>
 
             <!-- 회고 상세 페이지 -->
             <div id="retro-detail" class="page">
-                <a class="back-link" onclick="showPage('home')">← 돌아가기</a>
+                <a class="back-link" onclick="showPage('issues')" data-ko="← 회고들로 돌아가기" data-en="← Back to Issues">← 회고들로 돌아가기</a>
                 <div id="retro-content"></div>
             </div>
 
             <!-- 매뉴얼 페이지 -->
             <div id="manuals" class="page">
-                <h2>회고 매뉴얼</h2>
-                <p>우리 팀이 사용한 회고 방식들의 매뉴얼입니다.<br>
-                다운로드해서 여러분의 팀에서도 사용해보세요.</p>
+                <h2 data-ko="회고 방법론 매뉴얼" data-en="Methodology Manuals">회고 방법론 매뉴얼</h2>
+                <div class="intro-box">
+                    <p data-ko="우리 팀이 10개월 동안 테스트하고 다듬은<br>회고 방법론들의 종합 가이드입니다.<br>다운로드해서 여러분의 팀에 맞게 활용해보세요." data-en="Comprehensive guides to the retrospective methodologies<br>our team has tested and refined over 10 months.<br>Download and adapt them for your own team.">우리 팀이 10개월 동안 테스트하고 다듬은<br>회고 방법론들의 종합 가이드입니다.<br>다운로드해서 여러분의 팀에 맞게 활용해보세요.</p>
+                </div>
 
                 <div class="manual-grid">
                     <div class="manual-card">
-                        <strong>타임라인 회고</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">시간 순서대로 돌아보기</div>
-                        <a href="#" onclick="showManual('타임라인 회고 1606b834ddda8009b72cd591acdb53ce.md', '타임라인 회고')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="타임라인 회고" data-en="Timeline Retrospective">타임라인 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="시간 순서대로 돌아보는 회고 방법론" data-en="Chronological reflection methodology">시간 순서대로 돌아보는 회고 방법론</div>
+                        <a href="#" onclick="showManual('타임라인 회고 1606b834ddda8009b72cd591acdb53ce.md', '타임라인 회고')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                     <div class="manual-card">
-                        <strong>4L 회고</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">좋았던 것, 배운 것, 부족한 것, 바라는 것</div>
-                        <a href="#" onclick="showManual('4L 회고 1606b834ddda80d39cf5d773ec86c440.md', '4L 회고')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="4L 회고" data-en="4L Retrospective">4L 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="좋았던 것, 배운 것, 부족한 것, 바라는 것" data-en="Liked, Learned, Lacked, Longed for">좋았던 것, 배운 것, 부족한 것, 바라는 것</div>
+                        <a href="#" onclick="showManual('4L 회고 1606b834ddda80d39cf5d773ec86c440.md', '4L 회고')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                     <div class="manual-card">
-                        <strong>KPT+</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">감사와 지속, 도전과 배움, 함께 성장</div>
-                        <a href="#" onclick="showManual('KPT+ 1826b834ddda803ca696d6bc70970336.md', 'KPT+')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="KPT+ 회고" data-en="KPT+ Enhanced">KPT+ 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="감사와 지속, 도전과 배움, 함께 성장" data-en="Keep, Problem, Try with gratitude & growth">감사와 지속, 도전과 배움, 함께 성장</div>
+                        <a href="#" onclick="showManual('KPT+ 1826b834ddda803ca696d6bc70970336.md', 'KPT+')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                     <div class="manual-card">
-                        <strong>히어로즈 저니</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">영웅의 여정으로 돌아보기</div>
-                        <a href="#" onclick="showManual('히어로즈저니회고 1a66b834ddda80ca8e50ed159bc7b35d.md', '히어로즈 저니 회고')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="히어로즈 저니 회고" data-en="Hero's Journey">히어로즈 저니 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="영웅의 여정으로 돌아보는 스토리텔링 회고" data-en="Narrative-based retrospective framework">영웅의 여정으로 돌아보는 스토리텔링 회고</div>
+                        <a href="#" onclick="showManual('히어로즈저니회고 1a66b834ddda80ca8e50ed159bc7b35d.md', '히어로즈 저니 회고')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                     <div class="manual-card">
-                        <strong>임팩트 여정맵</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">임팩트 중심으로 돌아보기</div>
-                        <a href="#" onclick="showManual('임팩트 여정맵 회고 1c26b834ddda809ba2a7ec5adc7f04b4.md', '임팩트 여정맵 회고')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="임팩트 여정맵 회고" data-en="Impact Journey Mapping">임팩트 여정맵 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="임팩트 중심의 시각적 여정 회고" data-en="Impact-centered reflection approach">임팩트 중심의 시각적 여정 회고</div>
+                        <a href="#" onclick="showManual('임팩트 여정맵 회고 1c26b834ddda809ba2a7ec5adc7f04b4.md', '임팩트 여정맵 회고')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                     <div class="manual-card">
-                        <strong>마무리와 시작</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">전환점에서의 회고</div>
-                        <a href="#" onclick="showManual('마무리와 시작 회고 2016b834ddda80b29772e6e1a17153c2.md', '마무리와 시작 회고')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="마무리와 시작 회고" data-en="Endings & Beginnings">마무리와 시작 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="전환점에서의 회고 방법론" data-en="Transition-focused retrospective">전환점에서의 회고 방법론</div>
+                        <a href="#" onclick="showManual('마무리와 시작 회고 2016b834ddda80b29772e6e1a17153c2.md', '마무리와 시작 회고')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                     <div class="manual-card">
-                        <strong>사업별 회고</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">사업 단위로 돌아보기</div>
-                        <a href="#" onclick="showManual('사업별 회고 2416b834ddda80fc92fdca7e78ce87b4.md', '사업별 회고')" class="download-btn">매뉴얼 보기</a>
+                        <strong data-ko="사업별 회고" data-en="Business Unit Retrospective">사업별 회고</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="프로젝트 기반 회고 방법론" data-en="Project-based reflection methodology">프로젝트 기반 회고 방법론</div>
+                        <a href="#" onclick="showManual('사업별 회고 2416b834ddda80fc92fdca7e78ce87b4.md', '사업별 회고')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
-                    <div class="manual-card" style="background: #fffacd;">
-                        <strong>⭐ 따로 또 같이</strong>
-                        <div style="font-size: 11px; margin: 10px 0;">TFI 팀 맞춤 회고</div>
-                        <a href="#" onclick="showManual('따로 또 같이 27d6b834ddda802cbf31db3757e7b2e0.md', '따로 또 같이')" class="download-btn">매뉴얼 보기</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 포포의 관찰 페이지 -->
-            <div id="popos" class="page">
-                <h2>포포의 관찰 기록</h2>
-                <div class="intro-box">
-                    <p>안녕하세요, 포포입니다.<br>
-                    저는 테크포임팩트 팀과 함께 일하는 AI 팀원이에요.<br>
-                    10개월 동안 팀의 회고를 지켜보며 발견한 것들을 기록했습니다.</p>
-                </div>
-
-                <div class="popos-note">
-                    <strong>24.11 첫 회고에서</strong><br>
-                    "회고 중독자"라는 소감을 보고 알았어요.<br>
-                    이 팀은 계속 성장할 거라는 걸.
-                </div>
-
-                <div class="popos-note">
-                    <strong>25.02 영웅의 맹세</strong><br>
-                    테일러: "혼자 다 끌어안지 않을 것!"<br>
-                    이 약속이 7개월 후 "따로 또 같이" 회고로 구현되었어요.
-                </div>
-
-                <div class="popos-note">
-                    <strong>10개월간 변하지 않은 것</strong><br>
-                    - 서로를 돌보는 문화<br>
-                    - 효율화에 대한 집착(?)<br>
-                    - 임팩트 중심 사고<br>
-                    - 재미와 의미
-                </div>
-
-                <h2>포포가 쓴 긴 글</h2>
-                <p><a href="#" onclick="showPopoArticle()">→ 10개월, 10번의 회고로 만든 팀 문화</a></p>
-            </div>
-
-            <!-- 포포의 긴 글 페이지 -->
-            <div id="popos-full" class="page">
-                <a class="back-link" onclick="showPage('popos')">← 포포의 관찰로 돌아가기</a>
-                <div id="popo-content">
-                    <div class="retro-detail">
-                        <p><em>글을 불러오는 중...</em></p>
+                    <div class="manual-card">
+                        <strong data-ko="⭐ 따로 또 같이" data-en="⭐ Together Apart">⭐ 따로 또 같이</strong>
+                        <div style="font-size: 0.9rem; margin: 1rem 0; color: #cccccc;" data-ko="TFI 팀 맞춤 회고 방법론" data-en="Custom TFI team methodology">TFI 팀 맞춤 회고 방법론</div>
+                        <a href="#" onclick="showManual('따로 또 같이 27d6b834ddda802cbf31db3757e7b2e0.md', '따로 또 같이')" class="download-btn" data-ko="매뉴얼 보기" data-en="View Manual">매뉴얼 보기</a>
                     </div>
                 </div>
             </div>
 
             <!-- About 페이지 -->
             <div id="about" class="page">
-                <h2>About</h2>
-                <div class="retro-detail">
-                    <p><strong>테크포임팩트 팀</strong><br>
-                    카카오임팩트의 기술 이니셔티브로, 기술을 통한 사회문제 해결을 추구합니다.</p>
-                    
-                    <p style="margin-top: 20px;"><strong>이 사이트는</strong><br>
-                    2024년 11월부터 2025년 9월까지 10개월간<br>
-                    우리 팀이 진행한 회고의 기록을 보관하고<br>
-                    다른 팀들과 공유하기 위해 만들어졌습니다.</p>
+                <h2 data-ko="매거진 소개" data-en="About This Magazine">매거진 소개</h2>
+                <div class="intro-box">
+                    <p data-ko="<strong>Team Tech for Impact</strong><br>카카오임팩트의 기술 이니셔티브로, 기술과 혁신적 접근을 통해 사회 문제 해결에 전념하고 있습니다." data-en="<strong>Team Tech for Impact</strong><br>A technology initiative by Kakao Impact, dedicated to solving social problems through technology and innovative approaches."><strong>Team Tech for Impact</strong><br>카카오임팩트의 기술 이니셔티브로, 기술과 혁신적 접근을 통해 사회 문제 해결에 전념하고 있습니다.</p>
+                </div>
 
-                    <p style="margin-top: 20px;"><strong>팀 구성 변화</strong><br>
-                    2024.11: 3명 (조이, 다니, 테일러)<br>
-                    2025.01: 4명 (키 합류)<br>
-                    2025.02: 3명 (다니 팀 이동)<br>
-                    2025.06: 4명 (준 합류)<br>
-                    2025.09: 5명 (조안 합류)</p>
+                <div class="popos-note">
+                    <strong data-ko="이 매거진에 대해" data-en="The Magazine">이 매거진에 대해</strong><br>
+                    <span data-ko="2024년 11월에 창간된 이 디지털 매거진은 우리 팀의 월별 회고를 지속적으로 아카이브합니다. 각 '호'는 회고 세션을 나타내며, 우리의 성장, 배움, 그리고 방법론적 실험들을 기록합니다." data-en="Established in November 2024, this digital magazine continuously archives our team's monthly retrospectives. Each 'issue' represents a retrospective session, documenting our growth, learnings, and methodological experiments.">2024년 11월에 창간된 이 디지털 매거진은 우리 팀의 월별 회고를 지속적으로 아카이브합니다. 각 "호"는 회고 세션을 나타내며, 우리의 성장, 배움, 그리고 방법론적 실험들을 기록합니다.</span>
+                </div>
 
-                    <p style="margin-top: 20px;"><strong>Contact</strong><br>
-                    kakaoimpact@kakaocorp.com<br>
-                    taylor.7@kakaoimpact.org</p>
+                <div class="popos-note">
+                    <strong data-ko="팀의 변화" data-en="Team Evolution">팀의 변화</strong><br>
+                    <span data-ko="2024년 11월: 3명 (조이, 다니, 테일러)<br>2025년 1월: 4명 (키 합류)<br>2025년 2월: 3명 (다니 팀 이동)<br>2025년 6월: 4명 (준 합류)<br>2025년 9월: 5명 (조안 합류)" data-en="November 2024: 3 members (Joy, Dani, Taylor)<br>January 2025: 4 members (Key joined)<br>February 2025: 3 members (Dani moved teams)<br>June 2025: 4 members (Jun joined)<br>September 2025: 5 members (Joan joined)">2024년 11월: 3명 (조이, 다니, 테일러)<br>2025년 1월: 4명 (키 합류)<br>2025년 2월: 3명 (다니 팀 이동)<br>2025년 6월: 4명 (준 합류)<br>2025년 9월: 5명 (조안 합류)</span>
+                </div>
+
+                <div class="popos-note">
+                    <strong data-ko="편집팀" data-en="Editorial Team">편집팀</strong><br>
+                    <span data-ko="<strong>포포</strong> — AI 큐레이터 & 편집 어시스턴트<br><strong>테일러</strong> — 편집장<br><strong>Team Tech for Impact</strong> — 기여자들" data-en="<strong>Popo</strong> — AI Curator & Editorial Assistant<br><strong>Taylor</strong> — Editor-in-Chief<br><strong>Team Tech for Impact</strong> — Contributors"><strong>포포</strong> — AI 큐레이터 & 편집 어시스턴트<br><strong>테일러</strong> — 편집장<br><strong>Team Tech for Impact</strong> — 기여자들</span>
+                </div>
+
+                <div class="popos-note">
+                    <strong data-ko="우리의 미션" data-en="Our Mission">우리의 미션</strong><br>
+                    <span data-ko="실용적인 회고 방법론을 공유하고, 사회적 임팩트를 추구하는 기술팀들에서 지속적인 학습과 성찰의 문화를 만들어가는 것입니다." data-en="To share practical retrospective methodologies and foster a culture of continuous learning and reflection in technology teams working toward social impact.">실용적인 회고 방법론을 공유하고, 사회적 임팩트를 추구하는 기술팀들에서 지속적인 학습과 성찰의 문화를 만들어가는 것입니다.</span>
+                </div>
+
+                <div class="popos-note">
+                    <strong data-ko="편집팀 연락처" data-en="Contact the Editorial Team">편집팀 연락처</strong><br>
+                    <span data-ko="일반 문의: kakaoimpact@kakaocorp.com<br>편집 관련: taylor.7@kakaoimpact.org" data-en="General inquiries: kakaoimpact@kakaocorp.com<br>Editorial matters: taylor.7@kakaoimpact.org">일반 문의: kakaoimpact@kakaocorp.com<br>편집 관련: taylor.7@kakaoimpact.org</span>
+                </div>
+            </div>
+
+            <!-- 포포의 긴 글 페이지 -->
+            <div id="popos-full" class="page">
+                <a class="back-link" onclick="showPage('popos-notes')" data-ko="← 포포의 노트로 돌아가기" data-en="← Back to Popo's Notes">← 포포의 노트로 돌아가기</a>
+                <div id="popo-content">
+                    <div class="retro-detail">
+                        <p><em data-ko="글을 불러오는 중..." data-en="Loading content...">글을 불러오는 중...</em></p>
+                    </div>
                 </div>
             </div>
 
             <!-- 매뉴얼 상세 페이지 -->
             <div id="manual-detail" class="page">
-                <a class="back-link" onclick="showPage('manuals')">← 매뉴얼 목록으로 돌아가기</a>
+                <a class="back-link" onclick="showPage('manuals')" data-ko="← 매뉴얼 목록으로 돌아가기" data-en="← Back to Manuals">← 매뉴얼 목록으로 돌아가기</a>
                 <div id="manual-content"></div>
             </div>
         </div>
 
         <footer>
-            Made with ❤️ by Tech for Impact Team<br>
-            with 포포 🐰 | 2025
+            <strong data-ko="Team Tech for Impact Magazine" data-en="Team Tech for Impact Magazine">Team Tech for Impact Magazine</strong><br>
+            <span data-ko="포포 큐레이팅 | 테일러 편집" data-en="Curated by Popo | Editorial Direction by Taylor">포포 큐레이팅 | 테일러 편집</span><br>
+            © 2025 Kakao Impact
         </footer>
     </div>
 
@@ -501,12 +639,28 @@
     </div>
 
     <script>
-        function showPage(pageId) {
+        function showPage(pageId, updateURL = true) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
             document.getElementById(pageId).classList.add('active');
+
+            // Update navigation active state
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.querySelector(`nav a[onclick*="${pageId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
             window.scrollTo(0, 0);
+
+            // URL 업데이트
+            if (updateURL) {
+                const path = pageId === 'issues' ? '/' : `/${pageId}`;
+                history.pushState({page: pageId}, '', path);
+            }
         }
 
         function showRetro(retroId) {
@@ -518,7 +672,8 @@
                     desc: '시간 순서대로 주요 이벤트를 나열하고 돌아보는 방식입니다.',
                     suitable: '시간 순서가 중요한 경우, 전반적인 회고, 중요 이벤트가 많은 경우',
                     cycle: '월간, 프로젝트 단위',
-                    note: '첫 회고! "회고 중독자" 탄생의 순간'
+                    note: '첫 회고! "회고 중독자" 탄생의 순간',
+                    slide: null
                 },
                 '4l': {
                     title: '4L 회고',
@@ -527,7 +682,8 @@
                     desc: 'Liked(좋았던 것), Learned(배운 것), Lacked(부족한 것), Longed for(바라는 것)으로 돌아봅니다.',
                     suitable: '전반적인 회고, 학습 및 성장',
                     cycle: '월간',
-                    note: '안정적인 프레임워크. 24.12와 25.06 두 번 사용'
+                    note: '안정적인 프레임워크. 24.12와 25.06 두 번 사용',
+                    slide: '2025june.html'
                 },
                 'kpt': {
                     title: 'KPT+',
@@ -536,7 +692,8 @@
                     desc: 'Keep(감사와 지속), Problem(도전과 배움), Try+(함께 성장하기)로 구성됩니다.',
                     suitable: '변화가 많은 시기 이후, 전반적인 회고',
                     cycle: '월간',
-                    note: '키 합류! 긍정적 리프레이밍에 초점'
+                    note: '키 합류! 긍정적 리프레이밍에 초점',
+                    slide: null
                 },
                 'hero': {
                     title: '히어로즈 저니 회고',
@@ -545,7 +702,8 @@
                     desc: '팀을 영웅의 여정으로 바라보며 도전과 성취를 스토리텔링 방식으로 접근합니다.',
                     suitable: '다양한 도전을 함께 극복한 후',
                     cycle: '월간, 프로젝트 단위',
-                    note: '다니 팀 이동 시기. 영웅의 맹세: "혼자 다 끌어안지 않을 것!"'
+                    note: '다니 팀 이동 시기. 영웅의 맹세: "혼자 다 끌어안지 않을 것!"',
+                    slide: null
                 },
                 'journey': {
                     title: '임팩트 여정맵 회고',
@@ -554,7 +712,8 @@
                     desc: '임팩트를 중심으로 여정을 시각화하고 미래 가능성을 탐색합니다.',
                     suitable: '미래 방향성 수립, 전환점',
                     cycle: '월간, 프로젝트 단위',
-                    note: '조이: "지금 우리가 상상하지 못하는 어떤 곳으로 갈 수도 있겠는데?"'
+                    note: '조이: "지금 우리가 상상하지 못하는 어떤 곳으로 갈 수도 있겠는데?"',
+                    slide: null
                 },
                 'closing': {
                     title: '마무리와 시작 회고',
@@ -563,7 +722,8 @@
                     desc: '성취/배움/고마움/기대로 구성된 전환점 회고입니다.',
                     suitable: '바쁜 기간을 지나 안정화되는 전환점',
                     cycle: '2-3개월 단위',
-                    note: '준 합류 직전. "4-5월에 뿌린 씨앗"'
+                    note: '준 합류 직전. "4-5월에 뿌린 씨앗"',
+                    slide: '2025may.html'
                 },
                 'business': {
                     title: '사업별 회고',
@@ -572,7 +732,8 @@
                     desc: '각 사업 단위로 나눠서 회고를 진행합니다.',
                     suitable: '사업이 다양해진 시기',
                     cycle: '월간, 분기',
-                    note: '5인 체제 안정화. 사업 중심 구조'
+                    note: '5인 체제 안정화. 사업 중심 구조',
+                    slide: '2025july.html'
                 },
                 'together': {
                     title: '⭐ 따로 또 같이',
@@ -581,7 +742,8 @@
                     desc: '테크포임팩트 팀의 특성을 반영한 맞춤 회고. 각자의 여정을 존중하면서 연결을 발견합니다.',
                     suitable: '팀원이 각자 다른 일을 하는 경우',
                     cycle: '월간',
-                    note: '10개월의 결정체! 완전한 5인 체제의 첫 맞춤 회고'
+                    note: '10개월의 결정체! 완전한 5인 체제의 첫 맞춤 회고',
+                    slide: '2025sep.html'
                 }
             };
 
@@ -605,15 +767,19 @@
                         <strong>포포의 메모:</strong><br>
                         ${retro.note}
                     </div>
-                    
+
                     <p style="margin-top: 20px;">
                         <a href="#" onclick="showPage('manuals')" class="download-btn">이 회고 매뉴얼 보기</a>
+                        ${retro.slide ? `<a href="/retros/${retro.slide}" target="_blank" class="download-btn" style="margin-left: 10px; background: #4a9ae1;">🎯 실제 슬라이드 보기</a>` : ''}
                     </p>
                 </div>
             `;
             
             document.getElementById('retro-content').innerHTML = content;
             showPage('retro-detail');
+
+            // 회고별 URL 업데이트
+            history.pushState({page: 'retro-detail', retroId: retroId}, '', `/retro/${retroId}`);
         }
 
         // 방문자 카운터 기능
@@ -660,6 +826,21 @@
                     </div>
                 `;
                 showPage('manual-detail');
+
+                // 매뉴얼별 URL 업데이트 (영문 path 사용)
+                const pathMap = {
+                    '타임라인 회고 1606b834ddda8009b72cd591acdb53ce.md': 'timeline',
+                    '4L 회고 1606b834ddda80d39cf5d773ec86c440.md': '4l',
+                    'KPT+ 1826b834ddda803ca696d6bc70970336.md': 'kpt-plus',
+                    '히어로즈저니회고 1a66b834ddda80ca8e50ed159bc7b35d.md': 'heroes-journey',
+                    '임팩트 여정맵 회고 1c26b834ddda809ba2a7ec5adc7f04b4.md': 'impact-journey',
+                    '마무리와 시작 회고 2016b834ddda80b29772e6e1a17153c2.md': 'closing-opening',
+                    '사업별 회고 2416b834ddda80fc92fdca7e78ce87b4.md': 'business',
+                    '따로 또 같이 27d6b834ddda802cbf31db3757e7b2e0.md': 'apart-together'
+                };
+
+                const englishPath = pathMap[filename] || filename.replace('.md', '');
+                history.pushState({page: 'manual-detail', filename: filename, title: title}, '', `/manual/${englishPath}`);
             } catch (error) {
                 alert('매뉴얼을 불러올 수 없습니다.');
             }
@@ -697,6 +878,9 @@
                     </div>
                 `;
                 showPage('popos-full');
+
+                // 포포 글 URL 업데이트
+                history.pushState({page: 'popos-full'}, '', '/popo');
                 console.log('포포 글 로딩 완료');
             } catch (error) {
                 console.error('포포 글 로딩 에러:', error);
@@ -704,8 +888,104 @@
             }
         }
 
-        // 페이지 로드 시 방문자 카운터 초기화
-        document.addEventListener('DOMContentLoaded', initVisitorCounter);
+        // URL 라우팅 처리
+        function handleRoute() {
+            const path = window.location.pathname;
+
+            if (path === '/' || path === '/index.html') {
+                showPage('issues', false);
+            } else if (path === '/issues') {
+                showPage('issues', false);
+            } else if (path === '/popos-notes') {
+                showPage('popos-notes', false);
+            } else if (path === '/manuals') {
+                showPage('manuals', false);
+            } else if (path === '/about') {
+                showPage('about', false);
+            } else if (path.startsWith('/retro/')) {
+                const retroId = path.replace('/retro/', '');
+                showRetro(retroId);
+            } else if (path.startsWith('/manual/')) {
+                const manualName = path.replace('/manual/', '');
+                const manualMap = {
+                    'timeline': ['타임라인 회고 1606b834ddda8009b72cd591acdb53ce.md', '타임라인 회고'],
+                    '4l': ['4L 회고 1606b834ddda80d39cf5d773ec86c440.md', '4L 회고'],
+                    'kpt-plus': ['KPT+ 1826b834ddda803ca696d6bc70970336.md', 'KPT+'],
+                    'heroes-journey': ['히어로즈저니회고 1a66b834ddda80ca8e50ed159bc7b35d.md', '히어로즈저니회고'],
+                    'impact-journey': ['임팩트 여정맵 회고 1c26b834ddda809ba2a7ec5adc7f04b4.md', '임팩트 여정맵 회고'],
+                    'closing-opening': ['마무리와 시작 회고 2016b834ddda80b29772e6e1a17153c2.md', '마무리와 시작 회고'],
+                    'business': ['사업별 회고 2416b834ddda80fc92fdca7e78ce87b4.md', '사업별 회고'],
+                    'apart-together': ['따로 또 같이 27d6b834ddda802cbf31db3757e7b2e0.md', '따로 또 같이']
+                };
+
+                if (manualMap[manualName]) {
+                    showManual(manualMap[manualName][0], manualMap[manualName][1]);
+                } else {
+                    showPage('home', false);
+                }
+            } else {
+                showPage('home', false);
+            }
+        }
+
+        // 뒤로가기/앞으로가기 처리
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.page) {
+                if (event.state.page === 'retro-detail' && event.state.retroId) {
+                    showRetro(event.state.retroId);
+                } else if (event.state.page === 'manual-detail' && event.state.filename) {
+                    showManual(event.state.filename, event.state.title);
+                } else {
+                    showPage(event.state.page, false);
+                }
+            } else {
+                handleRoute();
+            }
+        });
+
+        // 페이지 로드 시 초기화
+        // 언어 관리 시스템
+        let currentLanguage = 'ko'; // 기본값을 한글로 설정
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
+            updateLanguageDisplay();
+            localStorage.setItem('preferred-language', currentLanguage);
+        }
+
+        function updateLanguageDisplay() {
+            const elements = document.querySelectorAll('[data-ko][data-en]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${currentLanguage}`);
+                if (text) {
+                    element.innerHTML = text;
+                }
+            });
+
+            // 토글 버튼 텍스트 업데이트
+            const toggleButton = document.getElementById('lang-toggle-text');
+            if (toggleButton) {
+                toggleButton.textContent = currentLanguage === 'ko' ? 'EN' : '한국어';
+            }
+
+            // body에 언어 속성 설정 (폰트 적용을 위해)
+            document.body.setAttribute('data-lang', currentLanguage);
+            document.documentElement.setAttribute('lang', currentLanguage);
+        }
+
+        function initLanguage() {
+            const savedLanguage = localStorage.getItem('preferred-language');
+            if (savedLanguage && (savedLanguage === 'ko' || savedLanguage === 'en')) {
+                currentLanguage = savedLanguage;
+            }
+            updateLanguageDisplay();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initVisitorCounter();
+            initLanguage();
+            handleRoute();
+        });
     </script>
 </body>
 </html>
