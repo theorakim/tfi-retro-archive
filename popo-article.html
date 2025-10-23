@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10개월, 10번의 회고로 만든 팀 문화 - 테크포임팩트 회고 아카이브</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-lang="ko">
+    <div class="container">
+        <header>
+            <button class="language-toggle" onclick="toggleLanguage()">
+                <span id="lang-toggle-text">EN</span>
+            </button>
+            <h1 data-ko="Team Tech for Impact" data-en="Team Tech for Impact">Team Tech for Impact</h1>
+            <div class="subtitle" data-ko="A Magazine Curated by Popo | Est. November 2024" data-en="A Magazine Curated by Popo | Est. November 2024">A Magazine Curated by Popo | Est. November 2024</div>
+        </header>
+
+        <nav>
+            <a href="index.html" class="nav-link" data-ko="회고들" data-en="Issues">회고들</a>
+            <a href="popos-notes.html" class="nav-link active" data-ko="포포의 노트" data-en="Popo's Notes">포포의 노트</a>
+            <a href="about.html" class="nav-link" data-ko="소개" data-en="About">소개</a>
+        </nav>
+
+        <div class="content">
+            <a href="popos-notes.html" class="back-link" data-ko="← 포포의 노트로 돌아가기" data-en="← Back to Popo's Notes">← 포포의 노트로 돌아가기</a>
+
+            <div class="retro-detail" id="popo-content">
+                <p><em data-ko="글을 불러오는 중..." data-en="Loading content...">글을 불러오는 중...</em></p>
+            </div>
+        </div>
+
+        <footer>
+            <strong data-ko="Team Tech for Impact Magazine" data-en="Team Tech for Impact Magazine">Team Tech for Impact Magazine</strong><br>
+            <span data-ko="포포 큐레이팅 | 테일러 편집" data-en="Curated by Popo | Editorial Direction by Taylor">포포 큐레이팅 | 테일러 편집</span><br>
+            © 2025 Kakao Impact
+        </footer>
+    </div>
+
+    <div class="counter">
+        VISITORS: <span id="visitor-count">000000</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 포포의 긴 글 로딩
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('popo/popo-1.md');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const content = await response.text();
+                const htmlContent = content
+                    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                    .replace(/^---$/gm, '<hr style="margin: 20px 0;">')
+                    .replace(/\n/g, '<br>');
+
+                document.getElementById('popo-content').innerHTML = `
+                    <div style="line-height: 1.8;">
+                        ${htmlContent}
+                    </div>
+                `;
+            } catch (error) {
+                console.error('포포 글 로딩 에러:', error);
+                document.getElementById('popo-content').innerHTML = `
+                    <p><em data-ko="글을 불러올 수 없습니다." data-en="Content could not be loaded.">글을 불러올 수 없습니다.</em></p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
